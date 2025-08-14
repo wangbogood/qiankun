@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MiniQiankun - Main App</title>
+  <style>
+    #nav {
+      padding: 10px;
+      background: #f0f0f0;
+    }
+    #nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #007acc;
+    }
+    #subapp-container {
+      margin-top: 20px;
+      border: 1px solid #ddd;
+      min-height: 300px;
+      padding: 10px;
+    }
+  </style>
+   <script src="./mini-qiankun.js"></script>
+</head>
+<body>
+  <h1>🚀 MiniQiankun - 主应用</h1>
+  <div id="nav">
+    <button onclick="navigateTo('/app-vue')">Vue 子应用</button>
+    <button onclick="navigateTo('/app-react')">React 子应用</button>
+    <button onclick="navigateTo('/')">首页</button>
+  </div>
+  <!-- 子应用挂载点 -->
+  <div id="subapp-container"></div>
+  <!-- 引入我们手写的 mini-qiankun -->
+ 
+  <!-- 注册子应用 -->
+  <script>
+    // 添加导航函数
+
+    registerMicroApps({
+      name: 'app-vue',
+      entry: './vue.html', // 修改为相对路径
+      container: '#subapp-container',
+      activeRule: '/app-vue'
+    });
+
+    registerMicroApps({
+      name: 'app-react',
+      entry: './react.html', // 修改为相对路径
+      container: '#subapp-container',
+      activeRule: '/app-react'
+    });
+
+    // 启动微前端
+    start();
+  </script>
+</body>
+</html>
